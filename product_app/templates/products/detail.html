@@ -21,7 +21,7 @@
 </div>
 
 <div class="row">
-    <a href=""><button class="btn btn-primary btn-lg btn-block">Upvote {{ product.votes_total }}</button></a>
+    <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg btn-block">Upvote {{ product.votes_total }}</button></a>
 </div>
 
 <div class="row">
@@ -32,5 +32,10 @@
         <h3> on {{ product.pud_date }}</h3>
     </div>
 </div>
+
+<form id="upvote" method="POST" action="{% url 'upvote' product.id %}">
+    {% csrf_token %}
+    <input type="hidden">
+</form>
 
 {% endblock %}
